@@ -1,0 +1,358 @@
+@font-face {
+  font-family: Mehrbold;
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot");
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix")
+      format("embedded-opentype"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.woff") format("woff"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.db-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.db-flex-res {
+  display: flex;
+  justify-content: space-between;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: Mehrbold;
+  direction: rtl;
+  overflow-x: hidden;
+}
+body {
+  background-image: url("../img/bg/pizza.jpg");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+.scaled {
+  transform: scale(1.5, 2) !important;
+}
+/* header */
+
+.header {
+  width: 99.8%;
+  margin-top: 0;
+  top: 0;
+  position: fixed;
+  overflow: hidden;
+  height: 10rem;
+  z-index: 999;
+}
+
+/*header start*/
+.header {
+  width: 99.8%;
+  margin-top: 0;
+  top: 0;
+  position: fixed;
+  overflow: hidden;
+  height: 7rem;
+  z-index: 999;
+}
+
+.item-holder {
+  color: #ffffff;
+  width: 16rem;
+  padding: 2.2rem;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  margin: -1rem 3rem 0 4rem;
+}
+
+.info-user {
+  position: absolute;
+  font-family: Mehrbold;
+  width: auto;
+  height: 5rem;
+  display: flex;
+  left: 10%;
+  padding: 0 1rem;
+  top: 1rem;
+  margin: -1.5rem 0;
+  border: none;
+  float: left;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.user {
+  width: 5rem;
+  height: 5rem;
+}
+
+/*header end*/
+
+#bill-container,
+.bill-item__info,
+.bill-item__foods {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.logo-m {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  left: 0;
+  margin: -1rem -1.3rem;
+}
+
+#bill-container {
+  width: 73vw;
+  min-width: 300px;
+  background-color: rgba(14, 15, 20, 0.9);
+  z-index: 1;
+  padding: 25px 16px;
+}
+.bill-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+  padding: 40px 0;
+}
+.bill-item:last-child {
+  margin-bottom: 40px;
+}
+.bill-item__info {
+  border-radius: 80px;
+  background-color: rgb(14, 15, 20);
+  color: white;
+  font-family: Mehrbold;
+  list-style-type: none;
+  padding: 30px 25px;
+  border: 1px solid #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.input-text {
+  padding: 37px;
+}
+
+.bill-item__info li {
+  font-size: 18px;
+}
+
+.bill-item__info .text-food {
+  margin-bottom: -0.2rem;
+}
+
+.bill-item__info .div-text {
+  position: relative;
+  width: 13rem;
+  border-bottom: 1px dashed white;
+  margin-top: 0.5rem;
+}
+
+.div-text .number-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.bill-item__info button {
+  margin: 20px auto 0;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.input-text {
+  padding: 30px 20px;
+}
+
+.bill-item__info label {
+  position: relative;
+  left: 1rem;
+  padding: 0 1rem;
+}
+
+.bill-item__info label .input {
+  position: relative;
+  width: 8rem;
+  height: 2.5rem;
+  font-family: Mehrbold;
+  padding-right: 1rem;
+  margin-top: 1rem;
+  font-size: 17px;
+  border-radius: 17px;
+  border: none;
+  right: 9px;
+  outline: none;
+}
+
+.bill-item__info label span {
+  position: relative;
+  right: 19px;
+}
+
+.bill-item__info button {
+  position: relative;
+  margin: 12px auto 0;
+  padding: 5px 30px;
+  top: 1rem;
+  font-family: "Mehrbold";
+  cursor: pointer;
+  border: 0;
+  border-radius: 25px;
+  background-color: gold;
+  transition: all 0.3s linear;
+  font-size: 19px;
+  border-radius: 25px;
+}
+.bill-item__info button:hover {
+  background-color: goldenrod;
+}
+.bill-item__foods .food-item {
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse wrap;
+  margin: 4px 0;
+}
+.food-item .food-item-order {
+  font-size: 47px;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 36px;
+  margin-right: -24px;
+  border: 5px solid #fff;
+  background-color: rgb(218, 2, 2);
+  z-index: 2;
+  position: relative;
+}
+
+.food-item .number-one {
+  padding: 0 39px;
+}
+
+.food-item .number-three {
+  padding: 0 31px;
+}
+
+.number-one {
+  padding: 0 38px !important;
+}
+
+.number-three {
+  padding: 0 32px !important;
+}
+
+.food-item .food-item-order::after {
+  content: "ريال";
+  top: 6px;
+  position: absolute;
+  font-size: 15px;
+  left: 13px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.food-item .food-item-images {
+  background-color: rgb(218, 2, 2);
+  height: 43px;
+  border-radius: 5px;
+}
+.food-item .food-item-images img {
+  position: relative;
+  top: -4rem;
+  width: 107px;
+  height: 36px;
+  border-radius: 2px;
+}
+.food-item .food-item-images img {
+  position: relative;
+  bottom: 4rem;
+  left: -0.2rem;
+  width: 110px;
+  height: 95px;
+  object-fit: contain;
+  z-index: 99;
+}
+.food-item.two .food-item-images,
+.food-item.two .food-item-order {
+  background-color: rgb(236, 201, 0);
+}
+.food-item.three .food-item-images,
+.food-item.three .food-item-order {
+  background-color: rgb(130, 0, 236);
+}
+
+.bill-controls-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.main-container {
+  position: relative;
+  border-radius: 110px;
+  overflow: hidden;
+  margin-top: 11rem;
+  margin-top: 10rem;
+}
+
+.arrow {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0 30px;
+  color: rgba(255, 255, 255, 0.45);
+  border: 0;
+  background-color: rgba(14, 15, 20, 0);
+  font-size: 55px;
+  position: absolute;
+}
+
+.arrow.down {
+  bottom: 0;
+}
+.arrow.up {
+  top: 0;
+}
+
+.hambrg {
+  transition: all ease 0.3s;
+}
+
+.button {
+  position: absolute;
+  display: inline-block;
+  margin-right: -6.3rem;
+  z-index: 9;
+  padding-top: 1.5rem;
+}
+
+.button button {
+  border: none;
+  padding: 0.2rem 0.3rem;
+  border-radius: 20px;
+  background-color: white;
+  font-family: Mehrbold;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: silver;
+}

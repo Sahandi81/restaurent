@@ -1,0 +1,438 @@
+@font-face {
+    font-family: Mehrbold;
+    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot');
+    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix') format('embedded-opentype'),
+    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.woff') format('woff'),
+    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf') format('truetype');
+    font-weight: normal;
+}
+
+.db-flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.db-flex-res {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: Mehrbold;
+    direction: rtl;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* header */
+
+.header {
+    width: 99.8%;
+    margin-top: 0;
+    top: 0;
+    position: fixed;
+    overflow: hidden;
+    height: 10rem;
+    z-index: 999;
+}
+
+.item-holder {
+    color: #ffffff;
+    width: 16rem;
+    padding: 2.2rem;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    margin: -1rem 3rem 0 4rem;
+}
+
+.info-user {
+    position: absolute;
+    font-family: Mehrbold;
+    width: auto;
+    height: 5rem;
+    display: flex;
+    left: 10%;
+    padding: 0 1rem;
+    margin: -1.5rem 0;
+    border: none;
+    float: left;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+}
+
+.info {
+    margin-top: 0.8rem;
+    font-size: 25px;
+}
+
+.user {
+    width: 5rem;
+    height: 5rem;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin: auto;
+    font-family: Mehrbold;
+    width: 100%;
+}
+
+.bg-img {
+    background: url("../img/bg/hamburgers.jpg");
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.bg-img:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(14 ,15 ,20 ,0.4);
+}
+
+.bill {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 1rem 2rem 1.5rem 2rem;
+    text-align: center;
+    line-height: 1rem;
+    background-color: rgba(14 ,15 ,20 ,.7);
+    border: 1px solid darkred;
+    border-radius: 21%;
+    color: white;
+}
+
+.logo-m {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    left: 0;
+    margin: -1rem -1.3rem;
+}
+
+h2 {
+    position: relative;
+    width: auto;
+    font-size: 40px;
+    padding-right: 2rem;
+    margin: auto;
+    padding-top: 2.5rem;
+}
+
+.text-h2 {
+    padding-top: 1.3rem;
+    padding-right: 0;
+}
+
+.list-bill {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.list-food {
+    list-style: none;
+    padding-top: 1rem;
+}
+
+.padd-left {
+    margin-left: 3rem;
+}
+
+.div-text {
+    position: relative;
+    width: 13rem;
+    border-bottom: 1px dashed white;
+    margin-top: 1.5rem;
+    font-size: 18px;
+    display: flex;
+}
+
+.text-food {
+    margin-bottom: .5rem;
+}
+
+.div-text .number-text{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.food {
+    display: block;
+    font-size: 22px;
+}
+
+.total {
+    padding-top: 2rem;
+    text-align: justify;
+}
+
+.username {
+    position: relative;
+    display: flex;
+    right: 6%;
+}
+
+.username img {
+    width: 5rem;
+    height: 5rem;
+    padding-left: .5rem;
+}
+
+.username h3 {
+    margin-top: 2rem;
+    font-size: 23px;
+}
+
+.text-box {
+    position: relative;
+    margin: .5rem auto auto auto;
+    color: white;
+}
+
+textarea {
+    resize: none;
+    font-size: 20px;
+    text-align: center;
+    font-family: Mehrbold;
+    width: 65%;
+    height: 5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(2, 140, 212);
+    outline: none;
+}
+
+.contact-us {
+    position: absolute;
+    display: inline-grid;
+    float: right;
+    bottom: 0;
+    right: 6%;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.us-img {
+    width: 5rem;
+    height: 5rem;
+}
+
+span {
+    font-family: Mehrbold;
+    font-size: 31px;
+    color: white !important;
+    margin-top: -2.2rem;
+}
+
+span:hover {
+    color: dimgray;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* lis */
+
+.donald {
+    margin: -5rem -1rem;
+}
+
+.style {
+    padding: 5rem 7rem 3rem 7rem;
+    justify-content: space-around;
+    margin-top: 7rem;
+}
+
+.list-food-humbrg {
+    position: relative;
+    background-color: red;
+    width: 33rem;
+    height: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.price-img {
+    margin: -2.3rem -3.5rem;
+}
+
+.list-food-style {
+    display: flex;
+}
+
+.list-food-style li {
+    position: relative;
+    bottom: 3rem;
+    padding-right: 0;
+    padding-left: 3rem;
+    z-index: 99999;
+}
+
+.hamburg-img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.hambrg {
+    display: inline-block;
+    border: 1px solid silver;
+    border-radius: 20%;
+    padding-bottom: 1rem;
+    position: relative;
+    left: 75px;
+}
+
+.text-bill {
+    font-size: 27px;
+    padding: 0;
+    top: 1rem;
+}
+
+.text {
+    padding-right: 1rem;
+}
+
+.text li {
+    font-size: 20px;
+}
+
+.toman {
+    text-align: center;
+}
+
+button {
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    font-family: Mehrbold;
+    width: 30%;
+    height: 3rem;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    background-color: #ffcc00;
+    outline: none;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+button:hover {
+    background-color: #fdd85d;
+}
+
+.ds-bl {
+    position: relative;
+    top: 2rem;
+}
+
+.user-img {
+    margin-top: 1rem !important;
+}
+
+
+/* add-list */
+
+.adding {
+    top: -4rem;
+}
+
+.add {
+    position: relative;
+    padding: 0 1rem 0 3rem;
+}
+
+.input {
+    font-family: Mehrbold;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    background-color: white;
+    margin: 0 auto 1rem auto;
+    width: 8rem;
+    padding-right: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+
+.icon-plus {
+    position: relative;
+    position: relative;
+    top: -.5rem;
+    left: -1.5rem;
+    float: left;
+}
+
+i {
+    font-size: 15px;
+}
+
+.arrow-up{
+    width: 2rem;
+    height: 2rem;
+    border-bottom: 5px solid gray;
+    border-left: 5px solid gray;
+    position: absolute;
+    top: 15px;
+    right: 47%;
+    transform: rotate(135deg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.arrow-down{
+    width: 2rem;
+    height: 2rem;
+    border-bottom: 5px solid gray;
+    border-left: 5px solid gray;
+    position: absolute;
+    bottom: 15px;
+    right: 47%;
+    transform: rotate(-45deg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+@media(max-width: 1061px) {
+    .adding {
+        top: 0 !important;
+    }
+
+    .style {
+        width: 34rem !important;
+    }
+
+    .hambrg {
+        right: 0 !important;
+    }
+}
