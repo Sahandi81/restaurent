@@ -9,6 +9,7 @@ $userData = new UserData();
 $userData = $userData->userLogged();
 $restaurants = new Restaurant();
 $restaurants = $restaurants->showRest();
+
 ?>
 
 <!DOCTYPE html>

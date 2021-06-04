@@ -13,4 +13,5 @@ require_once 'engine/Class/AccEdit.php';
 require_once 'engine/Class/SignUpRest.php';
 require_once 'engine/Class/UserData.php';
 require_once 'engine/Class/Restaurant.php';
+require_once 'engine/Class/Receipt.php';
 

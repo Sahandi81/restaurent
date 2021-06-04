@@ -42,17 +42,14 @@ window.onclick = function (event) {
 /* send input */
 
 const input = document.querySelectorAll(".add-food");
+const input2 = document.querySelectorAll(".discount");
 
-function myFunction() {
+function myFunction(x) {
   input.forEach((i) => {
     i.value = Number(i.value) + 1;
   });
-}
-
-const input2 = document.querySelectorAll(".discount");
-
-function number(x) {
   input2.forEach((i) => {
     i.value = Number(i.value) + x
   });
 }
+
