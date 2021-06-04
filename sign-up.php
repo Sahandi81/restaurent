@@ -29,7 +29,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
             <form class="form" id="form" method="POST">
                 <div class="title-form">
                     <h1> ثبت نام </h1>
-                    <h2><a href="login.html"> ورود </a></h2>
+                    <h2><a href="sign-in.php"> ورود </a></h2>
                 </div>
 
                 <input type="hidden" name="type" value="sing-up">

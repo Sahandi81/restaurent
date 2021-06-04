@@ -35,6 +35,13 @@ class SignIn extends \DataBase\dbConn
             $articles->execute([':username' => $this->email, ':email' => $this->email]);
             $articles = $articles->fetchAll(PDO::FETCH_OBJ);
 
+            if (count($articles) == 0){
+				$this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+				$articles = $this->dbConn->prepare("SELECT `name`,`email`,'password' FROM `restaurant` WHERE `name`= :username OR `email`= :email");
+				$articles->execute([':username' => $this->email, ':email' => $this->email]);
+				$articles = $articles->fetchAll(PDO::FETCH_OBJ);
+			}
+
             if (count($articles) !== 0) {
                 $firstSalt = "j5mgag";
                 $secondSalt = "28,3%$5V(Tu'XZV{y";

@@ -104,7 +104,7 @@ form.addEventListener('submit' , function(e) {
 
     let formData = new FormData(this);
 
-    fetch('signup.php', {
+    fetch('sign-up.php', {
         method:'post',
         body: formData
     }).then(function(response) {

@@ -1,9 +1,8 @@
 @font-face {
     font-family: Mehrbold;
-    src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot");
-    src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix") format("embedded-opentype"),
-        url("http://fonts.codearena.ir/b/mehrbold/mehrbold.woff") format("woff"),
-        url("http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf") format("truetype");
+    src: url(../fonts/mehrbold.eot) format("eot");
+    src: url(../fonts/mehrbold.ttf) format("ttf");
+    src: url(../fonts/mehrbold.woff) format("woff");
     font-weight: normal;
 }
 
@@ -573,6 +572,16 @@ body {
 .button-2:hover {
     background-color: darkred;
 }
+.restaurant-name{
+    color: #ffffff;
+    font-size: 16px;
+    margin: auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+.translate-10 {
+    transform: translate(11px, 0px);
+}
 
 .time {
     right: 0;
@@ -656,4 +665,16 @@ body {
 
 .checked {
     color: orange;
+}
+
+/* score */
+
+.star-rating {
+    position: relative;
+    width: 11rem;
+    left: 1.5rem;
+}
+
+.star-rating span {
+    font-size: 1rem;
 }
