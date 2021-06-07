@@ -6,7 +6,7 @@ namespace Accounting;
 
 use PDO;
 
-class SignIn extends \DataBase\dbConn
+class SignIn  extends \DataBase\dbConn
 {
     use \SecurityFunctions;
 
@@ -31,18 +31,20 @@ class SignIn extends \DataBase\dbConn
         if ($this->stmt() === true) {
 
             $this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-            $articles = $this->dbConn->prepare("SELECT `username`,`email`,'password' FROM `users` WHERE `username`= :username OR `email`= :email");
+            $articles = $this->dbConn->prepare("SELECT `username`,`email`,`password` FROM `users` WHERE `username`= :username OR `email`= :email");
             $articles->execute([':username' => $this->email, ':email' => $this->email]);
             $articles = $articles->fetchAll(PDO::FETCH_OBJ);
 
             if (count($articles) == 0){
 				$this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-				$articles = $this->dbConn->prepare("SELECT `name`,`email`,'password' FROM `restaurant` WHERE `name`= :username OR `email`= :email");
+				$articles = $this->dbConn->prepare("SELECT `name`,`email`,`password` FROM `restaurant` WHERE `name`= :username OR `email`= :email");
 				$articles->execute([':username' => $this->email, ':email' => $this->email]);
 				$articles = $articles->fetchAll(PDO::FETCH_OBJ);
 			}
 
             if (count($articles) !== 0) {
+
+
                 $firstSalt = "j5mgag";
                 $secondSalt = "28,3%$5V(Tu'XZV{y";
                 $this->password = hash("sha1", $firstSalt . $this->password . $secondSalt);

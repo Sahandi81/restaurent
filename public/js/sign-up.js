@@ -101,16 +101,21 @@ form.addEventListener('submit', function(e) {
 
 form.addEventListener('submit' , function(e) {
     e.preventDefault();
-
+    console.log("Enter to Send");
     let formData = new FormData(this);
 
     fetch('sign-up.php', {
         method:'post',
         body: formData
     }).then(function(response) {
-        return response.text();
-    }).then(function(text) {
-        console.log(text);
+        return response.json();
+    }).then(function(data) {
+        if(data.MSG === "SUCCESSFULLY"){
+            window.location.href = "user-profile.php"
+        }
+        else if(data.MSG === "USER_EXISTS"){
+            alert("user exists")
+        }
     }).catch(function(error) {
         console.log(error);
     })

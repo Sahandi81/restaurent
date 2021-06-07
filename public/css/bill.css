@@ -1,9 +1,8 @@
 @font-face {
     font-family: Mehrbold;
-    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot');
-    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix') format('embedded-opentype'),
-    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.woff') format('woff'),
-    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf') format('truetype');
+    src: url(../fonts/mehrbold.eot) format("eot");
+    src: url(../fonts/mehrbold.ttf) format("ttf");
+    src: url(../fonts/mehrbold.woff) format("woff");
     font-weight: normal;
 }
 
@@ -40,6 +39,10 @@ body {
     overflow: hidden;
     height: 10rem;
     z-index: 999;
+}
+
+.header-logo {
+    height: 5rem;
 }
 
 .item-holder {
@@ -129,6 +132,10 @@ body {
     color: white;
 }
 
+.list-full {
+    margin-top: 5rem;
+}
+
 .logo-m {
     position: absolute;
     width: 6rem;
@@ -168,7 +175,7 @@ h2 {
 
 .div-text {
     position: relative;
-    width: 13rem;
+    width: 15rem;
     border-bottom: 1px dashed white;
     margin-top: 1.5rem;
     font-size: 18px;
@@ -176,7 +183,7 @@ h2 {
 }
 
 .text-food {
-    margin-bottom: .5rem;
+    margin-bottom: .3rem;
 }
 
 .div-text .number-text{
@@ -229,6 +236,7 @@ textarea {
     border-radius: 20px;
     background-color: rgb(2, 140, 212);
     outline: none;
+    color: white;
 }
 
 .contact-us {
@@ -261,7 +269,7 @@ a {
     text-decoration: none;
 }
 
-/* lis */
+/* list */
 
 .donald {
     margin: -5rem -1rem;

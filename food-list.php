@@ -13,11 +13,10 @@ $userData = $userData->userLogged('index');
 if (isset($_POST['type']) && $_POST['type'] == 'bill') {
 	$postData = new Security($_POST);
 	$postData = $postData->xssClean();
-	$signing  = new Receipt($postData);
-	print_r($signing);
-	die();
+	$bill     = new Receipt();
+	$bill->saveBill($postData);
+	die('db Error');
 }
-?>
 ?>
 <!DOCTYPE html>
 <!--suppress ALL -->
@@ -37,9 +36,11 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
     <nav class="navbar db-flex-between">
         <div class="db-flex-between item-holder">
             <img src="public/img/logo/humbrg.png" class="logo" alt="logo"/>
-            <div class="info-user">
-                <img class="logo-m user" src="public/img/icon/user.png" alt="">
-            </div>
+            <a href="user-profile.php">
+                <div class="info-user">
+                    <img src="public/img/icon/user.png" class="user" alt="">
+                </div>
+            </a>
         </div>
     </nav>
 </header>
@@ -49,101 +50,158 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
         <div class="bill-item">
             <form action="" method="post">
                 <input type="hidden" name="type" value="bill">
-                <div class="bill-item__info">
+                <div class="bill-item__info input-text">
                     <label>
-                        <input type="text" name="price" class="input discount" placeholder="قیمت"><span><i
-                                    class="fas fa-plus"></i></span>
+                        <input type="text" class="input discount" name="price" placeholder="قیمت"><span><i class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" class="input work-hour" placeholder="ساعت کاری"><span><i
-                                    class="fas fa-plus"></i></span>
+                        <input type="text" class="input work-hour" placeholder="ساعت کاری"><span><i class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" name="count" class="input add-food addfood" placeholder="افزودن غذا"><span><i
-                                    class="fas fa-plus"></i></span>
+                        <input type="text" class="input add-food" name="count-food" placeholder="افزودن غذا"><span><i class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" class="input add-drink" placeholder="افزودن نوشیدنی"><span><i
-                                    class="fas fa-plus"></i></span>
+                        <input type="text" class="input add-drink" name="count-drink" placeholder="افزودن نوشیدنی"><span><i class="fas fa-plus"></i></span>
                     </label>
-                    <div class="btn-confirm">
-                        <button type="submit"> تایید </button>
-                    </div>
+                    <input type="hidden" name="hamberger1" class="hamberger1" value="0">
+                    <input type="hidden" name="hamberger2" class="hamberger2" value="0">
+                    <input type="hidden" name="hamberger3" class="hamberger3" value="0">
+                    <button type="submit" id="submit" class="btn-signup"> تایید </button>
                 </div>
             </form>
             <div class="bill-item__foods">
                 <div class="food-item one">
                     <span class="food-item-order number-one"> 1 </span>
-                    <div class="food-item-images">
-                        <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
-                        <div class="button section-one">
-                            <button type="button" class="price" onclick="number(1000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(1000)">سفارش</button>
+                    <div class="food-item-images disp_flex">
+                        <div class="div-img">
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-one">
-                            <button type="button" class="price" onclick="number(1000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(1000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger1"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-one">
-                            <button type="button" class="price" onclick="number(1000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(1000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger2"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-one">
-                            <button type="button" class="price" onclick="number(1000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(1000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger3"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="food-item two">
                     <span class="food-item-order"> 2 </span>
-                    <div class="food-item-images">
-                        <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
-                        <div class="button section-two">
-                            <button type="button" class="price" onclick="number(2000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(2000)">سفارش</button>
+                    <div class="food-item-images disp_flex">
+                        <div class="div-img">
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-two">
-                            <button type="button" class="price" onclick="number(2000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(2000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger1"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-two">
-                            <button type="button" class="price" onclick="number(2000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(2000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number hamberger2">
+                                <span class="add-number"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-two">
-                            <button type="button" class="price" onclick="number(2000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(2000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger3"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="food-item three">
                     <span class="food-item-order number-three"> 3 </span>
-                    <div class="food-item-images">
-                        <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
-                        <div class="button section-three">
-                            <button type="button" class="price" onclick="number(3000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(3000)">سفارش</button>
+                    <div class="food-item-images disp_flex">
+                        <div class="div-img">
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-three">
-                            <button type="button" class="price" onclick="number(3000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(3000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger1"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-three">
-                            <button type="button" class="price" onclick="number(3000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(3000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger2"></span>
+                            </div>
                         </div>
-                        <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
-                        <div class="button section-three">
-                            <button type="button" class="price" onclick="number(3000)">قیمت</button>
-                            <button type="button" class="list" onclick="myFunction(3000)">سفارش</button>
+                        <div class="div-img">
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <div class="button section-one">
+                                <button type="button" class="price" onclick="number(1000)">قیمت</button>
+                                <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                            </div>
+                            <div class="text-number">
+                                <span class="add-number hamberger3"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
