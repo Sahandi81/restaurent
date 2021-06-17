@@ -1,18 +1,24 @@
 <?php
 
+use Accounting\AccEdit;
+use Bills\Receipt;
 use inputFiltering\Security;
 use User\UserData;
 
 require_once 'engine/Class/vendor/autoload.php';
 $user     = new UserData();
-$userData = $user->userLogged('index');
+$userData = $user->userLogged();
+$billClass = new Receipt();
+$bills = $billClass->getClientBill($userData->username);
+
 if (isset($_POST['type']) && $_POST['type'] == 'edit-profile'){
     $postData = new Security($_POST);
     $postData = $postData->xssClean();
-    $signing  = new \Accounting\AccEdit($postData, $userData);
+    $signing  = new AccEdit($postData, $userData);
     $signing  = $signing->updateDetails();
-    $userData = $user->userLogged('index');
+    $userData = $user->userLogged();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -54,9 +60,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'edit-profile'){
                         </label>
                     </div>
                 </div>
-
-                <button type="reset" class="btn-login">پاک کردن</button>
-                <button type="submit" class="btn-login">ثبت نام</button>
+                <button type="submit" class="btn-login"> تایید </button>
             </form>
 
             <div class="main-container">
@@ -64,64 +68,52 @@ if (isset($_POST['type']) && $_POST['type'] == 'edit-profile'){
                     <div class="splide">
                         <div class="splide__track">
                             <ul class="splide__list">
+                                <?php
+                                if (count($bills) != 0){
+                                    foreach ($bills as $bill){
+                                        $bill = json_decode($bill->details);
+                                ?>
                                 <li class="splide__slide slide">
                                     <div class="bill style bill-item sign-up-bill">
                                         <img src="public/img/logo/mac-donalds.png" class="logo-m donald" alt="donald"/>
                                         <div class="list-bill hambrg" style="display: inline-block">
                                             <ul class="list-food text">
-                                                <div class="div-text">
-                                                    <li class="text-food">چیز برگر</li>
-                                                    <li class="number-text">2</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">نوشابه کوکاکولا</li>
-                                                    <li class="number-text">3</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">سیب زمینی سرخ کرده</li>
-                                                    <li class="number-text">6</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">چیکن برگر</li>
-                                                    <li class="number-text">8</li>
-                                                </div>
-                                                <li class="food total toman">جمع کل = 100 هزار تومان</li>
+												<?php if (!empty($bill->hamberger2)) { ?>
+                                                    <div class="div-text">
+                                                        <li class="text-food">چیز برگر</li>
+                                                        <li class="number-text">2</li>
+                                                    </div>
+												<?php } ?>
+												<?php if (!empty($bill->count_drink)) { ?>
+                                                    <div class="div-text">
+                                                        <li class="text-food">نوشابه کوکاکولا</li>
+                                                        <li class="number-text">3</li>
+                                                    </div>
+												<?php } ?>
+												<?php if (!empty($bill->hamberger3)) { ?>
+                                                    <div class="div-text">
+                                                        <li class="text-food">سیب زمینی سرخ کرده</li>
+                                                        <li class="number-text">6</li>
+                                                    </div>
+												<?php } ?>
+												<?php if (!empty($bill->hamberger1)) { ?>
+                                                    <div class="div-text">
+                                                        <li class="text-food">چیکن برگر</li>
+                                                        <li class="number-text">8</li>
+                                                    </div>
+                                                <?php } ?>
+                                                <li class="food total"> جمع کل = <?= $bill->price ?> تومان</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="splide__slide slide">
-                                    <div class="bill style bill-item">
-                                        <img src="public/img/logo/mac-donalds.png" class="logo-m donald" alt="donald"/>
-                                        <div class="list-bill hambrg" style="display: inline-block">
-                                            <ul class="list-food text">
-                                                <div class="div-text">
-                                                    <li class="text-food">چیز برگر</li>
-                                                    <li class="number-text">2</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">نوشابه کوکاکولا</li>
-                                                    <li class="number-text">3</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">سیب زمینی سرخ کرده</li>
-                                                    <li class="number-text">6</li>
-                                                </div>
-
-                                                <div class="div-text">
-                                                    <li class="text-food">چیکن برگر</li>
-                                                    <li class="number-text">8</li>
-                                                </div>
-                                                <li class="food total toman">جمع کل = 100 هزار تومان</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <?php
+                                        }
+								    }else{ ?>
+                                <li class="splide__slide slide" style="color: #fff !important;">
+                                    بدون سابقه خرید از سایت
                                 </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>

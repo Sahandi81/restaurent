@@ -6,8 +6,9 @@ use User\UserData;
 require_once 'engine/Class/vendor/autoload.php';
 $userData = new UserData();
 $userData = $userData->userLogged();
-$bill = new Receipt();
-$bill = $bill->getBill();
+$billClass = new Receipt();
+$bill = $billClass->getBill();
+$saveBill = $billClass->addBill($userData->username);
 
 ?>
 

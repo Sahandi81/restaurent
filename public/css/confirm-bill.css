@@ -137,7 +137,7 @@ body {
 }
 
 .comment {
-    margin-top: 8rem;
+    margin-top: 9rem;
 }
 
 .receipt-list {
@@ -247,6 +247,10 @@ button:hover {
     height: 4rem;
 }
 
+.us {
+    margin-top: -1rem;
+}
+
 span {
     font-family: Mehrbold;
     font-size: 31px;
@@ -306,6 +310,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 38rem;
 }
 
 /*
@@ -441,10 +446,10 @@ body {
         justify-content: center;
     }
 
-    .page__group {
-        margin-left: 3.5rem;
-        margin-right: 3.5rem;
-    }
+    /*.page__group {*/
+    /*    margin-left: 3.5rem;*/
+    /*    margin-right: 3.5rem;*/
+    /*}*/
 }
 .star-rating {
     width: 23rem;
@@ -608,13 +613,13 @@ body {
 }
 
 .splide__arrow--next {
-    bottom: -7% !important;
-    right: 46% !important;
+    bottom: -14% !important;
+    right: 44.3% !important;
 }
 
 @media (max-width: 1200px) {
     .splide__arrow--prev {
-        top: -21% !important;
+        top: -33% !important;
     }
 }
 
@@ -630,7 +635,7 @@ body {
 
 .score-splide-next {
     bottom: -9% !important;
-    right: 43% !important;
+    right: 42% !important;
 }
 
 /* timer */
@@ -678,5 +683,10 @@ body {
 /* comments */
 
 .comment .splide__arrow{
-    left: 47% !important;
+    left: 49% !important;
+}
+
+.btn-send {
+    position: relative;
+    left: 17rem;
 }

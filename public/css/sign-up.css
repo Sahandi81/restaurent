@@ -143,6 +143,7 @@ h2 :hover {
 
 .input-text {
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .inpt {

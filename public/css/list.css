@@ -147,10 +147,6 @@ body {
   align-items: center;
 }
 
-.input-text {
-  padding: 37px;
-}
-
 .bill-item__info li {
   font-size: 18px;
 }
@@ -179,7 +175,7 @@ body {
 }
 
 .input-text {
-  padding: 30px 20px;
+  padding: 30px 12px;
 }
 
 .bill-item__info label {
@@ -207,7 +203,27 @@ body {
   right: 19px;
 }
 
-.bill-item__info button {
+.negative {
+  position: relative;
+  right: 5rem;
+  top: -.6rem;
+  color: white;
+  border: none;
+  background: none !important;
+  display: block;
+}
+
+.bill-item__info label .fas {
+    cursor: pointer;
+    color: white;
+}
+
+.bill-item__info label .fas:hover{
+    color: silver;
+}
+
+
+.bill-item__info #submit {
   position: relative;
   margin: 12px auto 0;
   padding: 5px 30px;
@@ -220,7 +236,7 @@ body {
   transition: all 0.3s linear;
   font-size: 19px;
 }
-.bill-item__info button:hover {
+.bill-item__info #submit:hover {
   background-color: goldenrod;
 }
 .bill-item__foods .food-item {
@@ -348,6 +364,7 @@ body {
   background-color: white;
   font-family: Mehrbold;
   cursor: pointer;
+  transition: all ease .5s;
 }
 
 .button button:hover {

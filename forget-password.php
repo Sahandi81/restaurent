@@ -36,7 +36,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'forget-pass'){
                     <label for="code"></label><input style="color: black !important;" type="text" class="input code" name="code" id="code" placeholder="کد را وارد کنید">
                     <label class="code"><a href="#"> ارسال دوباره </a></label>
 
-                    <label for="password"></label><input style="color: black !important;" type="text" class="input password" name="password" id="password" placeholder="پسورد جدید">
+                    <label for="password"></label><input style="color: black !important;" type="text" class="input password" name="password-1" id="password" placeholder="پسورد جدید">
 
                     <label for="password2"></label><input style="color: black !important;" type="text" class="input password2" id="password2" placeholder="تکرار پسورد">
                 </div>

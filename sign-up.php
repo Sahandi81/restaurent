@@ -12,6 +12,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,9 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
 </head>
 <body>
 
+
+
+
 <div class="container">
     <div class="bg-img">
         <div class="form-signup">
@@ -31,31 +35,34 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
                     <h1> ثبت نام </h1>
                     <h2><a href="sign-in.php"> ورود </a></h2>
                 </div>
+                <div class="title-form">
+                    <h2 style="padding: 0 !important;"><a href="sign-up-restaurant.php" style="font-size: 15px"> ثبت رستوران </a></h2>
+                </div>
 
                 <input type="hidden" name="type" value="sing-up">
-                <div class="input-text" id="input-text">
+                <div class="input-text margn_bottm" id="input-text">
                     <label for="username"></label><input type="text" name="username" class="inpt username" id="username" placeholder="نام">
-                    <small>Error message</small>
+
                 </div>
 
-                <div class="input-text" id="input-text">
+                <div class="input-text margn_bottm" id="input-text">
                     <label for="email"></label><input type="email"  name="email" class="inpt email" id="email" placeholder="ایمیل">
-                    <small>Error message</small>
+
                 </div>
 
-                <div class="input-text" id="input-text">
+                <div class="input-text margn_bottm" id="input-text">
                     <label for="number"></label><input type="text" class="inpt number" name="phone" id="number" placeholder="شماره همراه">
-                    <small>Error message</small>
+
                 </div>
 
-                <div class="input-text" id="input-text">
+                <div class="input-text margn_bottm" id="input-text">
                     <label for="password"></label><input type="password" class="inpt password" name="password-1" id="password" placeholder="پسورد">
-                    <small>Error message</small>
+
                 </div>
 
-                <div class="input-text" id="input-text">
+                <div class="input-text margn_bottm" id="input-text">
                     <label for="password2"></label><input type="password" class="inpt conf-password" name="password-2" id="password2" placeholder="تکرار پسورد">
-                    <small id="small">Error message</small>
+
                 </div>
 
                 <button type="submit" id="submit" class="btn-signup"> ثبت نام </button>
@@ -63,6 +70,18 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
         </div>
     </div>
 </div>
+
+<div id="modalEl" class="modal">
+    <div class="modal-content">
+        <div class="challenge">
+            <span class="close">&times;</span><br>
+             <div class="card">
+                <small class="small"></small>
+             </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="public/js/sign-up.js"></script>
 </body>

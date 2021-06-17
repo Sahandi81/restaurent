@@ -1,6 +1,5 @@
 <?php
 
-use Accounting\SignUp;
 use Accounting\SignUpRest;
 use inputFiltering\Security;
 require_once 'engine/Class/vendor/autoload.php';
@@ -33,13 +32,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'sign-up'){
 					<h1> ثبت نام </h1>
 					<h2><a href="sign-in.php"> ورود </a></h2>
 				</div>
-                <?php
-                if (isset($signing) && $signing === false){
-                ?>
-                همچین یوزر نیمی قبلا وجود دارد
-                <?php }elseif (isset($signing) && $signing === true){ ?>
-                با موفقیت ساخته شد
-                <?php } ?>
+
                 <input type="hidden" name="type" value="sign-up">
 				<div class="db-flex">
 					<div class="input-text">
@@ -75,7 +68,13 @@ if (isset($_POST['type']) && $_POST['type'] == 'sign-up'){
 		</div>
 	</div>
 </div>
-
+<?php
+if (isset($signing) && $signing === false){
+	?>
+    <script>
+        alert("قبلا حسابی با این مشخصات ثبت گردیده است");
+    </script>
+<?php }elseif (isset($signing) && $signing === true){ header('Location: restaurants.php'); } ?>
 
 </body>
 

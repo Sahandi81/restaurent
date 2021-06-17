@@ -43,7 +43,7 @@ $slideNumber = (int)round($countComments / 4);
 
 <div class="container">
     <div class="bg-img">
-        <div class="bill wh-50 comment">
+        <div class="bill comment">
             <div class="star-rating">
                 <div class="page">
                     <div class="page__demo">
@@ -69,40 +69,48 @@ $slideNumber = (int)round($countComments / 4);
             <div class="ds-flex slideDiv splide" style="justify-content: center">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php
+						<?php
 						$times = 0;
-                            for ($slideNumber; $slideNumber > 0; $slideNumber--){
-                        ?>
-                        <li class="splide__slide">
-                            <div class="ds-flex slideDiv">
-								<?php for ($i = 0; $i < 4; $i++) {
-									$index = (int)$i + (int)$times;
-								    if (!isset($comments[$index])) break;
-								    ?>
-                                    <div class="comment-box">
-                                        <div class="comment-text">
-                                            <p class="text-box-2">
-                                                <img src="public/img/icon/user.png" class="logo prof-pic" alt=""/>
-                                                <span> <?= $comments[$index]->text ?> </span>
-                                                <span> <?= $index ?> </span>
-                                            </p>
+						for ($slideNumber; $slideNumber >= 0; $slideNumber--) {
+							?>
+                            <li class="splide__slide">
+                                <div class="ds-flex slideDiv">
+									<?php for ($i = 0; $i < 4; $i++) {
+										$index = (int)$i + (int)$times;
+										if (!isset($comments[$index])) break;
+										?>
+                                        <div class="comment-box">
+                                            <div class="comment-text">
+                                                <p class="text-box-2">
+                                                    <img src="public/img/icon/user.png" class="logo prof-pic" alt=""/>
+                                                    <span> <?= $comments[$index]->text ?> </span>
+                                                </p>
+                                            </div>
+                                            <div class="reply">
+                                                <label>
+                                                    <input type="text" placeholder="پاسخ ..."
+                                                           class="text-box-2 reply-input"/>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="reply">
-                                            <label>
-                                                <input type="text" placeholder="پاسخ ..."
-                                                       class="text-box-2 reply-input"/>
-                                            </label>
-                                        </div>
-                                    </div>
-								<?php
-								}
-								$times = $times + 4;
-								?>
-                            </div>
-                        </li>
-                        <?php } ?>
+										<?php
+									}
+									$times = $times + 4;
+									?>
+                                </div>
+                            </li>
+						<?php }
+
+						if ($countComments == 0){
+						    echo 'هنوز نظری برای این رستوران ثبت نگردیده است!';
+                        }
+						?>
                     </ul>
                 </div>
+            <a href="send-comments.php?q=<?= $restaurant->name ?>">
+                <button type="submit" class="btn-login btn-send" style="transform: translateX(-17rem);width: 8rem;">ثبت نظر
+                </button>
+            </a>
             </div>
         </div>
     </div>

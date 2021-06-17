@@ -1,14 +1,14 @@
 <?php
 
+use Accounting\SignIn;
 use inputFiltering\Security;
+
 require_once 'engine/Class/vendor/autoload.php';
-if (isset($_POST['type']) && $_POST['type'] == 'sign-in'){
-    $postData = new Security($_POST);
-    $postData = $postData->xssClean();
-    $signing  = new \Accounting\SignIn($postData);
-    $signing  = $signing->addUser();
-    print_r($signing);
-    die();
+if (isset($_POST['type']) && $_POST['type'] == 'sign-in') {
+	$postData = new Security($_POST);
+	$postData = $postData->xssClean();
+	$signing = new SignIn($postData);
+	$signing = $signing->addUser();
 }
 
 ?>
@@ -34,12 +34,15 @@ if (isset($_POST['type']) && $_POST['type'] == 'sign-in'){
                 </div>
 
                 <div class="input-text">
-                    <label for="email"></label><input type="text" style="color: black !important;" class="input email" id="email" name="email" placeholder="ایمیل">
+                    <label for="email"></label><input type="text" style="color: black !important;" class="input email"
+                                                      id="email" name="email" placeholder="ایمیل">
                     <input type="hidden" name="type" value="sign-in">
-                    <label for="password"></label><input type="password" style="color: black !important;" class="input password" id="password" name="password" placeholder="پسورد">
+                    <label for="password"></label><input type="password" style="color: black !important;"
+                                                         class="input password" id="password" name="password"
+                                                         placeholder="پسورد">
                 </div>
 
-                <button type="submit" id="submit" class="btn-login"> ثبت نام </button>
+                <button type="submit" id="submit" class="btn-login"> ثبت نام</button>
                 <p><a href="forget-password.php"> فراموشی پسورد </a></p>
             </form>
         </div>
@@ -48,4 +51,15 @@ if (isset($_POST['type']) && $_POST['type'] == 'sign-in'){
 
 
 </body>
+<?php if (isset($_POST['type']) && $_POST['type'] == 'sign-in'){ ?>
+
+<script>
+	<?php if ($signing == 'WRONG_PASSWORD'){?>
+    alert("رمز عبور وارد شده اشتباه است!");
+	<?php }elseif ($signing == 'USER_NOT_EXIST'){ ?>
+    alert("نام کاربری وارد شده اشتباه است!");
+	<?php } ?>
+</script>
+
+<?php } ?>
 </html>

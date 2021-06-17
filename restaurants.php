@@ -44,39 +44,37 @@ $restaurants = $restaurants->showRest($_GET);
                             <li class="splide__slide dis-flex">
 								<?php
 								$photos = ['img/product/arbys.jpg', 'img/product/hardees.png', 'img/product/wendys.jpg', 'img/product/tacobell.jpg', 'img/product/burger-king.png'];
-								foreach ($restaurants
-
-								as $restaurant){ ?>
-                                <div class="ds-flex">
-                                    <div class="score-box">
-                                        <a href="food-list.php?q=<?= $restaurant->name ?>">
+								foreach ($restaurants as $restaurant) { ?>
+                                    <div class="ds-flex">
+                                        <div class="score-box">
                                             <div class="product-img">
-                                                <img src="public/<?= $photos[array_rand($photos)]; ?>"
-                                                     class="translate-10 img arbys-img" alt=""/>
+                                                <a href="food-list.php?q=<?= $restaurant->name ?>">
+                                                        <img src="public/<?= $photos[array_rand($photos)]; ?>"
+                                                             class="translate-10 img arbys-img" alt=""/>
+                                                </a>
                                             </div>
-                                        </a>
-                                        <div class="my-slider">
-                                            <a href="food-list.php?q=<?= $restaurant->name ?>">
-                                                <span class="restaurant-name"><?= $restaurant->name ?></span>
-                                            </a>
-                                            <a href="comments.php?q=<?= $restaurant->name ?>">
-                                                <div class="star-rating translate-10">
-                                                    <span class="fa fa-star <?= $restaurant->score >= 50 ? 'checked' : ''; ?>"></span>
-                                                    <span class="fa fa-star <?= $restaurant->score >= 40 ? 'checked' : ''; ?>"></span>
-                                                    <span class="fa fa-star <?= $restaurant->score >= 30 ? 'checked' : ''; ?>"></span>
-                                                    <span class="fa fa-star <?= $restaurant->score >= 20 ? 'checked' : ''; ?>"></span>
-                                                    <span class="fa fa-star <?= $restaurant->score >= 10 ? 'checked' : ''; ?>"></span>
-                                                </div>
-                                            </a>
-                                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-                                                <symbol id="star" viewBox="0 0 26 28">
-                                                    <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
-                                                </symbol>
-                                            </svg>
+                                            <div class="my-slider">
+                                                <a href="food-list.php?q=<?= $restaurant->name ?>">
+                                                    <span class="restaurant-name"><?= $restaurant->name ?></span>
+                                                </a>
+                                                <a href="comments.php?q=<?= $restaurant->name ?>">
+                                                    <div class="star-rating translate-10">
+                                                        <span class="fa fa-star <?= $restaurant->score >= 50 ? 'checked' : ''; ?>"></span>
+                                                        <span class="fa fa-star <?= $restaurant->score >= 40 ? 'checked' : ''; ?>"></span>
+                                                        <span class="fa fa-star <?= $restaurant->score >= 30 ? 'checked' : ''; ?>"></span>
+                                                        <span class="fa fa-star <?= $restaurant->score >= 20 ? 'checked' : ''; ?>"></span>
+                                                        <span class="fa fa-star <?= $restaurant->score >= 10 ? 'checked' : ''; ?>"></span>
+                                                    </div>
+                                                </a>
+                                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                                                    <symbol id="star" viewBox="0 0 26 28">
+                                                        <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
+                                                    </symbol>
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-									<?php } ?>
+								<?php } ?>
                             </li>
                         </ul>
                     </div>

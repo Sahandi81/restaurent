@@ -1,8 +1,10 @@
 @font-face {
   font-family: Mehrbold;
-  src: url(../fonts/mehrbold.eot) format("eot");
-  src: url(../fonts/mehrbold.ttf) format("ttf");
-  src: url(../fonts/mehrbold.woff) format("woff");
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot");
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix")
+      format("embedded-opentype"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.woff") format("woff"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf") format("truetype");
   font-weight: normal;
 }
 
@@ -101,15 +103,6 @@ html {
   right: 26%;
 }
 
-.form-pass {
-  padding: 1.5rem 1rem 1.5rem 1rem;
-}
-
-.form-input {
-  position: relative;
-  text-align: justify;
-}
-
 .title-form {
   position: relative;
   color: #fff;
@@ -179,10 +172,6 @@ p {
 a {
   color: #ffffff;
   text-decoration: none;
-}
-
-a:hover {
-  color: silver;
 }
 
 .db-flex {
@@ -373,7 +362,6 @@ a {
 
 .sign-form {
   margin-left: 3rem !important;
-  margin-top: 2rem;
 }
 
 .div-text {
@@ -391,61 +379,4 @@ a {
 
 .sign-up-bill {
   padding: 1rem 3rem 1.5rem 0rem;
-}
-
-/* change-pass */
-
-.code {
-  width: 50%;
-  height: 3rem;
-  display: inline;
-  margin: auto;
-  font-size: 15px;
-}
-
-#code {
-  margin-right: 2rem;
-}
-
-/* sign-up */
-
-.form-signup .input-text {
-  position: relative;
-  padding: 0;
-}
-
-.form-signup .input {
-  margin: .5rem auto;
-}
-
-.form-signup .username {
-  margin-top: 1.5rem;
-}
-
-.form-signup .btn-signup {
-  font-family: Mehrbold;
-  font-size: 22px;
-  border: none;
-  cursor: pointer;
-  min-width: 8.5rem;
-  height: 3rem;
-  margin-top: 4%;
-  border-radius: 16px;
-  position: relative;
-  background-color: gold;
-  outline: none !important;
-  transition: all 0.4s;
-}
-
-.form-signup .btn-signup:hover {
-  background-color: goldenrod;
-}
-
-.form-signup .input-text small {
-  color: red;
-  visibility: hidden;
-}
-
-.form-signup .input-text.error small {
-  visibility: visible;
 }

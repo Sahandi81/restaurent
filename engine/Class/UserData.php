@@ -32,6 +32,7 @@ class UserData extends dbConn
                 $token = $token . $_COOKIE['userInfo'];
                 $token = $this->cookieHashing($token);
 
+
                 if ($cookieToken == $token){
                     $this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                     $articles = $this->dbConn->prepare("SELECT * FROM users WHERE `token`=:token");
@@ -39,14 +40,26 @@ class UserData extends dbConn
                     $articles = $articles->fetchAll(PDO::FETCH_OBJ);
 
                     $foundedRows = count($articles);
+                    if ($foundedRows == 0){
+
+						$this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+						$articles = $this->dbConn->prepare("SELECT * FROM `restaurant` WHERE `token`=:token");
+						$articles->execute([':token' => $cookieToken]);
+						$articles = $articles->fetchAll(PDO::FETCH_OBJ);
+						$foundedRows = count($articles);
+
+					}
+
                     if ($foundedRows == 0) header('Location: sign-up.php');
 
 
                     return $articles[0];
-                }
+                }else{
+					header('Location: sign-up.php');
+					die();
+				}
             } else {
                 if ($page != 'index'){
-
                     setcookie('userInfo', '', time() - 48000, "/", null, null, true);
                     setcookie('logged_in', '', time() - 48000, "/", null, null, true);
                     header('Location: sign-up.php');
@@ -64,5 +77,15 @@ class UserData extends dbConn
             }
         }
     }
+
+    public function thisIsKarfarma($role): bool
+	{
+		if ($role == 'restaurant'){
+			return TRUE;
+		} else {
+			header('Location: sign-up.php');
+			die();
+		}
+	}
 
 }

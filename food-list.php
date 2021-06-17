@@ -7,13 +7,13 @@ use User\UserData;
 
 require_once 'engine/Class/vendor/autoload.php';
 $userData = new UserData();
-$userData = $userData->userLogged('index');
+$userData = $userData->userLogged();
 
 
 if (isset($_POST['type']) && $_POST['type'] == 'bill') {
 	$postData = new Security($_POST);
 	$postData = $postData->xssClean();
-	$bill     = new Receipt();
+	$bill = new Receipt();
 	$bill->saveBill($postData);
 	die('db Error');
 }
@@ -27,7 +27,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
           crossorigin="anonymous"/>
-    <title>افزودن لیست</title>
+    <title>افزودن غذا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"/>
 </head>
 <body>
@@ -52,21 +52,25 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                 <input type="hidden" name="type" value="bill">
                 <div class="bill-item__info input-text">
                     <label>
-                        <input type="text" class="input discount" name="price" placeholder="قیمت"><span><i class="fas fa-plus"></i></span>
+                        <input type="text" class="input discount" name="price" placeholder="قیمت"><span><i
+                                    class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" class="input work-hour" placeholder="ساعت کاری"><span><i class="fas fa-plus"></i></span>
+                        <input type="text" class="input work-hour" placeholder="ساعت کاری"><span><i
+                                    class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" class="input add-food" name="count-food" placeholder="افزودن غذا"><span><i class="fas fa-plus"></i></span>
+                        <input type="text" class="input add-food" name="count-food" placeholder="افزودن غذا"><span><i
+                                    class="fas fa-plus"></i></span>
                     </label>
                     <label>
-                        <input type="text" class="input add-drink" name="count-drink" placeholder="افزودن نوشیدنی"><span><i class="fas fa-plus"></i></span>
+                        <input type="text" class="input add-drink" name="count-drink"
+                               placeholder="افزودن نوشیدنی"><span><i class="fas fa-plus"></i></span>
                     </label>
                     <input type="hidden" name="hamberger1" class="hamberger1" value="0">
                     <input type="hidden" name="hamberger2" class="hamberger2" value="0">
                     <input type="hidden" name="hamberger3" class="hamberger3" value="0">
-                    <button type="submit" id="submit" class="btn-signup"> تایید </button>
+                    <button type="submit" id="submit" class="btn-signup"> تایید</button>
                 </div>
             </form>
             <div class="bill-item__foods">
@@ -74,40 +78,48 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                     <span class="food-item-order number-one"> 1 </span>
                     <div class="food-item-images disp_flex">
                         <div class="div-img">
-                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger1"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger2"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger3"></span>
@@ -119,40 +131,48 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                     <span class="food-item-order"> 2 </span>
                     <div class="food-item-images disp_flex">
                         <div class="div-img">
-                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger1"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number hamberger2">
                                 <span class="add-number"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger3"></span>
@@ -164,40 +184,48 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                     <span class="food-item-order number-three"> 3 </span>
                     <div class="food-item-images disp_flex">
                         <div class="div-img">
-                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image" />
+                            <img src="public/img/product/cocacola.png" class="hambrg drink" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction2(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/hamburger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger1"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/burger.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
-                            <div class="text-number">
-                                <span class="add-number hamberger2"></span>
+                            <div class="text-number hamberger2">
+                                <span class="add-number"></span>
                             </div>
                         </div>
                         <div class="div-img">
-                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image" />
+                            <img src="public/img/product/morsel.png" class="hambrg" alt="hamburger-image"/>
                             <div class="button section-one">
                                 <button type="button" class="price" onclick="number(1000)">قیمت</button>
                                 <button type="button" class="list" onclick="myFunction(1000,event)">سفارش</button>
+                                <button type="button" class="negative" onclick="btn(1000,event)"><i
+                                            class="fas fa-minus"></i></button>
                             </div>
                             <div class="text-number">
                                 <span class="add-number hamberger3"></span>
@@ -207,8 +235,6 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                 </div>
             </div>
         </div>
-
-        <div class="bill-item"></div>
 
     </div>
 

@@ -54,15 +54,18 @@ class SignIn  extends \DataBase\dbConn
                     $this->username = $articles[0]->username;
                     $this->email = $articles[0]->email;
 
-                    $this->setLoginCookie();
+					$token = $this->setLoginCookie();
 
-                    return json_encode(['MSG' => 'SUCCESSFULLY']);
+					$this->dbConn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+					$stmt = $this->dbConn->prepare("UPDATE `users` SET `token`=:token, `password`=:password WHERE `email`= :email");
+					$stmt->execute([':token' => $token,':password' => $this->password, ':email' => $this->email]);
+                    header('Location: user-profile.php');
                 } else{
-                    return json_encode(['MSG' => 'WRONG_PASSWORD']);
+                    return 'WRONG_PASSWORD';
 
                 }
             } else {
-                return json_encode(['MSG' => 'USER_NOT_EXIST']);
+                return 'USER_NOT_EXIST';
             }
         }
     }

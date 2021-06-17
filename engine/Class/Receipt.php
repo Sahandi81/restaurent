@@ -5,6 +5,7 @@ namespace Bills;
 
 
 use DataBase\dbConn;
+use PDO;
 
 class Receipt extends dbConn
 {
@@ -16,7 +17,7 @@ class Receipt extends dbConn
 	public string $foodTypeThree;
 	public string $price;
 
-	public function saveBill($cleanData)
+	public function saveBill($cleanData): bool
 	{
 
 		$this->countFood 	= $cleanData['count-food'];
@@ -44,5 +45,37 @@ class Receipt extends dbConn
 		session_commit();
 		return $bill;
 	}
-	
+
+	public function addBill($username)
+	{
+		if ($this->stmt() == true){
+			session_start();
+			$array = [
+			'count_food' 	=> $_SESSION['bill']['count-food'],
+			'count_drink' 	=> $_SESSION['bill']['count-drink'],
+			'price' 		=> $_SESSION['bill']['price'],
+			'hamberger1' 	=> $_SESSION['bill']['hamberger1'],
+			'hamberger2' 	=> $_SESSION['bill']['hamberger2'],
+			'hamberger3' 	=> $_SESSION['bill']['hamberger3']
+			];
+			$array = json_encode($array);
+			session_commit();
+			$this->dbConn->query("INSERT INTO `bill`(`username`, `details`) VALUES ('$username','$array')");
+
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function getClientBill($username)
+	{
+		if ($this->stmt() == true){
+			$articles = $this->dbConn->query("SELECT `details` FROM `bill` WHERE `username`='$username' ORDER BY `id` DESC ");
+			$articles->execute();
+			$articles = $articles->fetchAll(PDO::FETCH_OBJ);
+
+			return $articles;
+		}
+	}
 }

@@ -42,7 +42,7 @@ class SignUp extends dbConn
 
                 $token = $this->setLoginCookie();
 
-                $this->dbConn->query("INSERT INTO `users`(`username`, `email`, `token`, `password`, `phone`, `created_at`) VALUES ('$this->username','$this->username','$token','$this->password','$this->phone','$this->time')");
+                $this->dbConn->query("INSERT INTO `users`(`username`, `email`, `token`, `password`, `phone`, `created_at`) VALUES ('$this->username','$this->email','$token','$this->password','$this->phone','$this->time')");
                 return json_encode(['MSG' => 'SUCCESSFULLY']);
             }else{
                 return json_encode(['MSG' => 'USER_EXISTS']);

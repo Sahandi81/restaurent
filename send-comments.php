@@ -16,10 +16,6 @@ if (isset($_POST['type']) && $_POST['type'] == 'comment'){
     $comment  = new Comment();
     $comment->addComment($postData);
 }
-echo '<pre>';
-var_export($_POST);
-echo '</pre>';
-//die('here');
 ?>
 
 <!DOCTYPE html>

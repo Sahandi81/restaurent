@@ -2,18 +2,6 @@
 
 const controls_container = document.querySelector(".bill-controls-container");
 
-const slider = tns({
-  container: "#bill-container",
-  items: 1,
-  nav: false,
-  axis: "vertical",
-  mouseDrag: true,
-  constrolsPosition: "bottom",
-  controlsContainer: controls_container,
-  speed: 400,
-  gutter: 40,
-  center: true,
-});
 
 /* zoom */
 
@@ -34,7 +22,7 @@ img.forEach((i) => {
 });
 
 window.onclick = function (event) {
-  if (event.target == img) {
+  if (event.target === img) {
     modal.style.marginTop = "scale(1,1)";
   }
 };
@@ -47,58 +35,17 @@ const input2 = document.querySelectorAll(".discount");
 
 
 function myFunction(x,e) {
-    const elem = e.target.parentElement.parentElement.querySelector(".add-number")
-    elem.textContent = Number(elem.textContent) + 1
 
-    let element = 0;
-    let elemt = document.querySelectorAll(".hamberger1");
+    const nameClass = e.target.className.split(' ')[1];
+    const elem = e.target.parentElement.parentElement.querySelector(".add-number");
+    const input = document.querySelector("input."+nameClass);
+    let NumberProduct = e.target.parentElement.parentElement;
 
-    elemt.forEach((i) => {
-      element += Number(i.textContent);
-    });
-    const input = document.querySelectorAll("input.hamberger1");
-    input.forEach((i) => {
-      i.value = element;
-    });
+    elem.textContent = Number(elem.textContent) + 1;
+    input.value = NumberProduct.querySelector(".add-number").textContent;
 
-    let element2 = 0;
-    let elemt2 = document.querySelectorAll(".hamberger2");
-    elemt2.forEach((i) => {
-      element2 += Number(i.textContent);
-    });
-    const inpt2 = document.querySelectorAll("input.hamberger2");
-    inpt2.forEach((i) => {
-      i.value = element2;
-    });
 
-    let element3 = 0;
-    let elemt3 = document.querySelectorAll(".hamberger3");
-    elemt3.forEach((i) => {
-      element3 += Number(i.textContent);
-    });
-    const input3 = document.querySelectorAll("input.hamberger3");
-    input3.forEach((i) => {
-      i.value = element3;
-    });
-
-    food.forEach((i) => {
-      i.value = Number(i.value) + 1;
-    });
-    input2.forEach((i) => {
-      i.value = Number(i.value) + x
-    });
-}
-
-function myFunction2(x,e) {
-  const elem = e.target.parentElement.parentElement.querySelector(".add-number")
-  elem.textContent = Number(elem.textContent) + 1
-
-  drink.forEach((i) => {
-    i.value = Number(i.value) + 1;
-  });
-  input2.forEach((i) => {
-    i.value = Number(i.value) + x
-  });
+    return true;
 }
 
 function btn(x,e) {
