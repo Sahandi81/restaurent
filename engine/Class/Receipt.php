@@ -16,6 +16,18 @@ class Receipt extends dbConn
 	public string $foodTypeTwo;
 	public string $foodTypeThree;
 	public string $price;
+	public string $hamberger_1_1;
+	public string $hamberger_1_2;
+	public string $hamberger_1_3;
+	public string $hamberger_2_1;
+	public string $hamberger_2_2;
+	public string $hamberger_2_3;
+	public string $hamberger_3_1;
+	public string $hamberger_3_2;
+	public string $hamberger_3_3;
+	public string $coca_1;
+	public string $coca_2;
+	public string $coca_3;
 
 	public function saveBill($cleanData): bool
 	{
@@ -77,5 +89,27 @@ class Receipt extends dbConn
 
 			return $articles;
 		}
+	}
+
+	public function editFood($array)
+	{
+		if ($this->stmt() == true){
+			unset($array['type']);
+			$json = json_encode($array);
+			$this->dbConn->query("UPDATE `foods` SET `details`='$json'");
+			header('Location: choose-food.php');
+		}
+	}
+
+	public function getFood()
+	{
+		if ($this->stmt() == true) {
+			$article = $this->dbConn->prepare("SELECT * FROM `foods`");
+			$article->execute();
+			$article = $article->fetch(PDO::FETCH_OBJ);
+			$article = (array)json_decode($article->details);
+			return $article;
+		}
+		return false;
 	}
 }

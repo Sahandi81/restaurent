@@ -136,6 +136,10 @@ body {
     color: white;
 }
 
+.comment {
+    margin-top: 9rem;
+}
+
 .receipt-list {
     padding: 2rem 2.4rem 3.5rem 2.5rem;
 }
@@ -146,7 +150,7 @@ body {
     height: 6rem;
     border-radius: 50%;
     left: 0;
-    margin: -1.8rem -1.3rem;
+    margin: -.5rem -1.3rem;
 }
 
 h2 {
@@ -197,6 +201,15 @@ h2 {
 .shop h3 {
     margin-top: 1rem;
     font-size: 23px;
+    transition: all ease .5s;
+}
+
+.shop h3 a {
+    color: white;
+}
+
+.shop h3 a:hover {
+    color: silver;
 }
 
 button {
@@ -234,6 +247,10 @@ button:hover {
     height: 4rem;
 }
 
+.us {
+    margin-top: -1rem;
+}
+
 span {
     font-family: Mehrbold;
     font-size: 31px;
@@ -256,7 +273,6 @@ a {
     position: relative;
     font-family: Mehrbold;
     font-size: 18px;
-    color: #fff;
     display: block;
     background-color: white;
     margin: 0.7rem auto 0rem auto;
@@ -294,6 +310,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 38rem;
 }
 
 /*
@@ -429,10 +446,10 @@ body {
         justify-content: center;
     }
 
-    .page__group {
-        margin-left: 3.5rem;
-        margin-right: 3.5rem;
-    }
+    /*.page__group {*/
+    /*    margin-left: 3.5rem;*/
+    /*    margin-right: 3.5rem;*/
+    /*}*/
 }
 .star-rating {
     width: 23rem;
@@ -468,10 +485,7 @@ body {
     cursor: pointer;
 }
 
-
-
  /*socre-page*/
-
 
 .product-img{
     position: relative;
@@ -558,6 +572,15 @@ body {
     top: 0;
 }
 
+.my-slider .star-rating {
+    position: relative;
+    width: 11rem;
+    left: 1.5rem;
+}
+
+.my-slider .star-rating span {
+    font-size: 1rem;
+}
 
 /* receipt-bill */
 
@@ -571,16 +594,6 @@ body {
 
 .button-2:hover {
     background-color: darkred;
-}
-.restaurant-name{
-    color: #ffffff;
-    font-size: 16px;
-    margin: auto;
-    font-family: sans-serif;
-    text-align: center;
-}
-.translate-10 {
-    transform: translate(11px, 0px);
 }
 
 .time {
@@ -600,13 +613,13 @@ body {
 }
 
 .splide__arrow--next {
-    bottom: -7% !important;
-    right: 46% !important;
+    bottom: -14% !important;
+    right: 44.3% !important;
 }
 
 @media (max-width: 1200px) {
     .splide__arrow--prev {
-        top: -21% !important;
+        top: -33% !important;
     }
 }
 
@@ -616,13 +629,13 @@ body {
     margin-top: 7rem;
 }
 
-.splide__arrow--prev {
+.comment_score .splide__arrow--prev {
     top: -4% !important;
 }
 
 .score-splide-next {
     bottom: -9% !important;
-    right: 43% !important;
+    right: 42% !important;
 }
 
 /* timer */
@@ -667,14 +680,13 @@ body {
     color: orange;
 }
 
-/* score */
+/* comments */
 
-.star-rating {
-    position: relative;
-    width: 11rem;
-    left: 1.5rem;
+.comment .splide__arrow{
+    left: 49% !important;
 }
 
-.star-rating span {
-    font-size: 1rem;
+.btn-send {
+    position: relative;
+    left: 17rem;
 }

@@ -16,6 +16,21 @@
   justify-content: space-between;
 }
 
+.btn-signup {
+  font-family: Mehrbold;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  min-width: 8.5rem;
+  height: 3rem;
+  margin-top: 4%;
+  border-radius: 16px;
+  position: relative;
+  background-color: gold;
+  outline: none !important;
+  transition: all 0.4s;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -214,12 +229,12 @@ body {
 }
 
 .bill-item__info label .fas {
-  cursor: pointer;
-  color: white;
+    cursor: pointer;
+    color: white;
 }
 
 .bill-item__info label .fas:hover{
-  color: silver;
+    color: silver;
 }
 
 

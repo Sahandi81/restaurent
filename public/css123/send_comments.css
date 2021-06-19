@@ -1,9 +1,8 @@
 @font-face {
     font-family: Mehrbold;
-    src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot");
-    src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix") format("embedded-opentype"),
-        url("http://fonts.codearena.ir/b/mehrbold/mehrbold.woff") format("woff"),
-        url("http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf") format("truetype");
+    src: url(../fonts/mehrbold.eot) format("eot");
+    src: url(../fonts/mehrbold.ttf) format("ttf");
+    src: url(../fonts/mehrbold.woff) format("woff");
     font-weight: normal;
 }
 
@@ -128,7 +127,7 @@ body {
     position: relative;
     max-width: 100%;
     height: auto;
-    margin: auto;
+    margin: 4rem;
     padding: 2rem 2rem 3.5rem 2rem;
     text-align: center;
     line-height: 1rem;
@@ -288,9 +287,10 @@ input:not(:checked) > label:hover ~ label:before {
 }
   
 .send {
+    font-family: Mehrbold;
     border: none;
-    padding: .5rem 1rem;
-    border-radius: 20px;
+    padding: 0 1.5rem;
+    border-radius: 33px;
     color: white;
     background-color: black;
     font-size: 20px;
@@ -299,5 +299,6 @@ input:not(:checked) > label:hover ~ label:before {
 }
 
 .send:hover {
+    color: silver;
     background-color: rgba(14, 15, 20, 0.9);
 }

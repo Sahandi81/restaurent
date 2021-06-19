@@ -9,13 +9,14 @@ require_once 'engine/Class/vendor/autoload.php';
 $userDetails = new UserData();
 $userData = $userDetails->userLogged('restaurant');
 $userDetails->thisIsKarfarma($userData->role);
+$food = new Receipt();
+$food = $food->getFood();
 
-
-if (isset($_POST['type']) && $_POST['type'] == 'bill') {
+if (isset($_POST['type']) && $_POST['type'] == 'restaurant-bill') {
 	$postData = new Security($_POST);
 	$postData = $postData->xssClean();
 	$bill = new Receipt();
-	$bill->saveBill($postData);
+	$bill->editFood($postData);
 	die('db Error');
 }
 ?>
@@ -50,19 +51,20 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
     <div id="bill-container">
         <div class="bill-item">
             <form action="" method="post">
-                <input type="text" name="hamberger-1-1" class="hamberger-1-1" value="0">
-                <input type="text" name="hamberger-1-2" class="hamberger-1-2" value="0">
-                <input type="text" name="hamberger-1-3" class="hamberger-1-3" value="0">
-                <input type="text" name="hamberger-2-1" class="hamberger-2-1" value="0">
-                <input type="text" name="hamberger-2-2" class="hamberger-2-2" value="0">
-                <input type="text" name="hamberger-2-3" class="hamberger-2-3" value="0">
-                <input type="text" name="hamberger-3-1" class="hamberger-3-1" value="0">
-                <input type="text" name="hamberger-3-2" class="hamberger-3-2" value="0">
-                <input type="text" name="hamberger-3-3" class="hamberger-3-3" value="0">
-                <input type="text" name="coca-1" class="coca-1"  value="0">
-                <input type="text" name="coca-2" class="coca-2"  value="0">
-                <input type="text" name="coca-3" class="coca-3"  value="0">
-                <input type="submit" value="بفلس">
+                <input type="hidden" name="type" value="restaurant-bill">
+                <input type="hidden" name="hamberger-1-1" class="hamberger-1-1" value="<?= $food['hamberger-1-1'] ?>">
+                <input type="hidden" name="hamberger-1-2" class="hamberger-1-2" value="<?= $food['hamberger-1-2'] ?>">
+                <input type="hidden" name="hamberger-1-3" class="hamberger-1-3" value="<?= $food['hamberger-1-3'] ?>">
+                <input type="hidden" name="hamberger-2-1" class="hamberger-2-1" value="<?= $food['hamberger-2-1'] ?>">
+                <input type="hidden" name="hamberger-2-2" class="hamberger-2-2" value="<?= $food['hamberger-2-2'] ?>">
+                <input type="hidden" name="hamberger-2-3" class="hamberger-2-3" value="<?= $food['hamberger-2-3'] ?>">
+                <input type="hidden" name="hamberger-3-1" class="hamberger-3-1" value="<?= $food['hamberger-3-1'] ?>">
+                <input type="hidden" name="hamberger-3-2" class="hamberger-3-2" value="<?= $food['hamberger-3-2'] ?>">
+                <input type="hidden" name="hamberger-3-3" class="hamberger-3-3" value="<?= $food['hamberger-3-3'] ?>">
+                <input type="hidden" name="coca-1" class="coca-1"  value="<?= $food['coca-1'] ?>" >
+                <input type="hidden" name="coca-2" class="coca-2"  value="<?= $food['coca-2'] ?>" >
+                <input type="hidden" name="coca-3" class="coca-3"  value="<?= $food['coca-3'] ?>" >
+                <button type="submit" id="submit" class="btn-signup"> ثبت منو </button>
             </form>
         <div class="bill-item__foods">
             <div class="food-item one">
@@ -73,11 +75,11 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                         <div class="button section-one">
                             <button type="button" class="price" onclick="number(1000)">قیمت</button>
                             <button type="button" class="list coca-1" onclick="myFunction(1000,event)">سفارش</button>
-                            <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                            <button type="button" class="negative" onclick="btn(1000,event)"><i
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['coca-1'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -90,7 +92,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number">
-                            <span class="add-number hamberger1"></span>
+                            <span class="add-number hamberger1"><?= $food['hamberger-1-1'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -103,7 +105,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-1-2">
-                            <span class="add-number hamberger2"></span>
+                            <span class="add-number hamberger2"><?= $food['hamberger-1-2'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -116,7 +118,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-1-3">
-                            <span class="add-number hamberger3"></span>
+                            <span class="add-number hamberger3"><?= $food['hamberger-1-3'] ?></span>
                         </div>
                     </div>
                 </div>
@@ -129,11 +131,11 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                         <div class="button section-one">
                             <button type="button" class="price" onclick="number(1000)">قیمت</button>
                             <button type="button" class="list coca-2" onclick="myFunction(1000,event)">سفارش</button>
-                            <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                            <button type="button" class="negative" onclick="btn(1000,event)"><i
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['coca-2'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -146,7 +148,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-2-1">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['hamberger-2-1'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -159,7 +161,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-2-2">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['hamberger-2-2'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -172,7 +174,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-2-3">
-                            <span class="add-number hamberger3"></span>
+                            <span class="add-number hamberger3"><?= $food['hamberger-2-3'] ?></span>
                         </div>
                     </div>
                 </div>
@@ -185,11 +187,11 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                         <div class="button section-one">
                             <button type="button" class="price" onclick="number(1000)">قیمت</button>
                             <button type="button" class="list coca-3" onclick="myFunction(1000,event)">سفارش</button>
-                            <button type="button" class="negative" onclick="btn2(1000,event)"><i
+                            <button type="button" class="negative" onclick="btn(1000,event)"><i
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['coca-3'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -202,7 +204,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-3-1">
-                            <span class="add-number hamberger1"></span>
+                            <span class="add-number hamberger1"><?= $food['hamberger-3-1'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -215,7 +217,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-3-2">
-                            <span class="add-number"></span>
+                            <span class="add-number"><?= $food['hamberger-3-2'] ?></span>
                         </div>
                     </div>
                     <div class="div-img">
@@ -228,7 +230,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
                                         class="fas fa-minus"></i></button>
                         </div>
                         <div class="text-number hamberger-3-3">
-                            <span class="add-number hamberger3"> 0 </span>
+                            <span class="add-number hamberger3"> <?= $food['hamberger-3-3'] ?> </span>
                         </div>
                     </div>
                 </div>
@@ -238,10 +240,8 @@ if (isset($_POST['type']) && $_POST['type'] == 'bill') {
 
     <div class="bill-controls-container">
         <button class="arrow up">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
         </button>
         <button class="arrow down">
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
         </button>
     </div>
 </div>

@@ -1,9 +1,8 @@
 @font-face {
     font-family: Mehrbold;
-    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot');
-    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix') format('embedded-opentype'),
-    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.woff') format('woff'),
-    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf') format('truetype');
+    src: url(../fonts/mehrbold.eot) format("eot");
+    src: url(../fonts/mehrbold.ttf) format("ttf");
+    src: url(../fonts/mehrbold.woff) format("woff");
     font-weight: normal;
 }
 
@@ -78,6 +77,32 @@ body {
     width: 5rem;
     height: 5rem;
     margin: -1rem 3rem 0 4rem;
+}
+
+.info-user {
+    position: absolute;
+    font-family: Mehrbold;
+    width: auto;
+    height: 5rem;
+    display: flex;
+    left: 10%;
+    padding: 0 1rem;
+    margin: -1.5rem 0;
+    border: none;
+    float: left;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+}
+
+.info {
+    margin-top: .8rem;
+    font-size: 25px;
+}
+
+.user {
+    width: 5rem;
+    height: 5rem;
 }
 
 .button {

@@ -44,50 +44,18 @@ function myFunction(x,e) {
     elem.textContent = Number(elem.textContent) + 1;
     input.value = NumberProduct.querySelector(".add-number").textContent;
 
-
     return true;
 }
 
 function btn(x,e) {
-    const elem = e.target.parentElement.parentElement.querySelector(".add-number") || e.target.parentElement.parentElement.parentElement.querySelector(".add-number")
-    elem.textContent = Number(elem.textContent) - 1
 
-    let element = 0;
-    let elemt = document.querySelectorAll(".hamberger1");
-    elemt.forEach((i) => {
-        element -= Number(i.textContent);
-    });
-    const input = document.querySelectorAll("input.hamberger1");
-    input.forEach((i) => {
-        i.value = element;
-    });
+    const nameClass = e.target.parentElement.parentElement.querySelector(".list").className.split(' ')[1];
+    const elem = e.target.parentElement.parentElement.parentElement.querySelector(".add-number");
+    const input = document.querySelector("input."+nameClass);
+    elem.textContent = Number(elem.textContent) - 1;
+    input.value = elem.textContent;
 
-    let element2 = 0;
-    let elemt2 = document.querySelectorAll(".hamberger2");
-    elemt2.forEach((i) => {
-        element2 -= Number(i.textContent);
-    });
-    const inpt2 = document.querySelectorAll("input.hamberger2");
-    inpt2.forEach((i) => {
-        i.value = element2;
-    });
-
-    let element3 = 0;
-    let elemt3 = document.querySelectorAll(".hamberger3");
-    elemt3.forEach((i) => {
-        element3 -= Number(i.textContent);
-    });
-    const input3 = document.querySelectorAll("input.hamberger3");
-    input3.forEach((i) => {
-        i.value = element3;
-    });
-
-    food.forEach((i) => {
-        i.value = Number(i.value) - 1;
-    });
-    input2.forEach((i) => {
-        i.value = Number(i.value) - x
-    });
+    return true;
 }
 
 function btn2(x,e) {

@@ -1,0 +1,179 @@
+@font-face {
+    font-family: Mehrbold;
+    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot');
+    src: url('http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix') format('embedded-opentype'),
+    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.woff') format('woff'),
+    url('http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@media (max-width: 358px) {
+    .title-form {
+        margin-bottom: -5rem !important;
+    }
+
+    h1 {
+        font-size: 39px !important;
+        padding-left: 4rem !important;
+        padding-right: .5rem !important;
+    }
+
+    h2 {
+        font-size: 30px !important;
+        padding-top: 1.5rem !important;
+    }
+
+    .input {
+        padding-left: 1rem !important;
+    }
+}
+
+@media (max-width: 308px) {
+    h2 {
+        font-size: 25px !important;
+        padding-top: 2rem !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .form-login {
+        right: 0 !important;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    direction: rtl;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    text-align: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 0 auto;
+    font-family: Mehrbold;
+}
+
+.bg-img {
+    background: url("../img/bg/fast-food.jpg");
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.form-login {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    text-align: center;
+    line-height: 1rem;
+    background-color: rgba(2, 140, 212, .9);
+    border-radius: 26%;
+    right: 26%;
+}
+
+.input-text {
+    position: relative;
+    text-align: justify;
+}
+
+.input {
+    font-family: Mehrbold;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    background-color: white;
+    margin: 1.7rem auto 1.5rem auto;
+    padding: .3rem 1.5rem .5rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+
+label a:hover {
+    color: silver;
+}
+
+.code {
+    width: 50%;
+    height: 3rem;
+    display: inline;
+    margin: auto;
+    font-size: 15px;
+}
+
+#code {
+    margin-right: 2rem;
+}
+
+.btn-login {
+    font-family: Mehrbold;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    min-width: 8.5rem;
+    height: 3rem;
+    border-radius: 16px;
+    position: relative;
+    background-color: gold;
+    outline: none !important;
+    transition: all 0.4s;
+}
+
+
+.btn-login:hover {
+    background-color: #fdd85d;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-us {
+    position: absolute;
+    display: inline-grid;
+    float: right;
+    bottom: 0;
+    right: 6%;
+    cursor: pointer;
+    transition: all ease .5s;
+    z-index: 999;
+}
+
+.us-img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.contact-us span {
+    font-family: Mehrbold;
+    font-size: 31px;
+    color: white;
+    margin-top: -2.2rem;
+}
+
+.contact-us span:hover {
+    color: silver;
+}
+
+
+

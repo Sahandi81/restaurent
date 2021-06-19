@@ -1,0 +1,382 @@
+@font-face {
+  font-family: Mehrbold;
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot");
+  src: url("http://fonts.codearena.ir/b/mehrbold/mehrbold.eot?#iefix")
+      format("embedded-opentype"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.woff") format("woff"),
+    url("http://fonts.codearena.ir/b/mehrbold/mehrbold.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@media (max-width: 358px) {
+  .title-form {
+    margin-bottom: -5rem !important;
+  }
+
+  h1 {
+    font-size: 39px !important;
+    padding-left: 4rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  h2 {
+    font-size: 30px !important;
+    padding-top: 1.5rem !important;
+  }
+
+  .input {
+    padding-left: 1rem !important;
+  }
+}
+
+@media (max-width: 308px) {
+  h2 {
+    font-size: 25px !important;
+    padding-top: 2rem !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .form-login {
+    right: 0 !important;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  text-align: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Mehrbold;
+}
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.splide__track {
+  width: 101% !important;
+
+}
+.nextBtn {
+  right: 50%;
+  transform: translate(50%, -50%) !important;
+}
+.bg-img {
+  background: url("../img/bg/fast-food.jpg");
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.form-login {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+  text-align: center;
+  line-height: 1rem;
+  background-color: rgba(2, 140, 212, 0.9);
+  border-radius: 26%;
+  right: 26%;
+}
+
+.title-form {
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  line-height: 4;
+  bottom: 3rem;
+  flex-wrap: nowrap;
+  margin-bottom: -6rem;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 33px;
+  padding-top: 2.5rem;
+}
+
+h2 :hover {
+  color: #c0c0c0;
+}
+
+.input-text {
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.input {
+  font-family: Mehrbold;
+  font-size: 18px;
+  display: block;
+  background-color: white;
+  margin: 1.7rem auto 2rem auto;
+  padding: 0.5rem 1.5rem 0.5rem 3rem;
+  outline: none;
+  border: none;
+  border-radius: 18px;
+}
+
+.btn-login {
+  font-family: Mehrbold;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  min-width: 8.5rem;
+  height: 3rem;
+  border-radius: 16px;
+  position: relative;
+  background-color: gold;
+  outline: none !important;
+  transition: all 0.4s;
+}
+
+.btn-login:hover {
+  background-color: goldenrod;
+}
+
+p {
+  padding-top: 1.3rem;
+  font-size: 22px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.db-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.label-style {
+  text-align: right;
+  float: right;
+}
+.btn-style {
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+  background-color: darkslategray;
+  font-size: 20px;
+}
+
+/* sign-up-bill */
+
+.main-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0 !important;
+}
+
+.signing {
+  right: 0;
+  display: flex;
+  padding-left: 6rem;
+  border-radius: 61px;
+  z-index: 9;
+}
+
+.slider-bill {
+  width: auto;
+  height: auto;
+  padding: 0 2rem;
+  border-radius: 20px !important;
+  display: flex;
+  flex-wrap: wrap;
+  left: -3rem;
+  background-color: rgba(14, 15, 20, 0.7);
+}
+
+.text-info {
+  width: 12rem;
+  padding: 0.2rem 1.5rem 0.2rem 0;
+}
+
+.bill {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin: 3rem auto;
+  padding: 1rem 1.5rem 1.5rem 0;
+  text-align: justify;
+  line-height: 1rem;
+  background-color: rgba(14, 15, 20, 0.7);
+  border: 1px solid darkred;
+  border-radius: 21%;
+  color: white;
+}
+
+.logo-m {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  left: 0;
+  margin: -1rem -1.3rem;
+}
+
+.list-bill {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.list-food {
+  list-style: none;
+  padding-top: 1rem;
+}
+
+.food {
+  display: block;
+  padding: 1rem 0.5rem 0.5rem 3rem;
+  font-size: 18px;
+}
+
+.total {
+  padding-top: 2rem;
+  text-align: justify;
+}
+
+.arrow-up {
+  width: 2rem;
+  height: 2rem;
+  border-bottom: 5px solid gray;
+  border-left: 5px solid gray;
+  position: absolute;
+  top: 15px;
+  right: 47%;
+  transform: rotate(135deg);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.arrow-down {
+  width: 2rem;
+  height: 2rem;
+  border-bottom: 5px solid gray;
+  border-left: 5px solid gray;
+  position: absolute;
+  bottom: 15px;
+  right: 47%;
+  transform: rotate(-45deg);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-us {
+  position: absolute;
+  display: inline-grid;
+  float: right;
+  bottom: 0;
+  right: 6%;
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.us-img {
+  width: 5rem;
+  height: 5rem;
+}
+
+span {
+  font-family: Mehrbold;
+  font-size: 31px;
+  color: white !important;
+  margin-top: -2.2rem;
+}
+
+span:hover {
+  color: dimgray;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bill-controls-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.main-container {
+  position: relative;
+  border-radius: 110px;
+  overflow: hidden;
+  margin-top: 11rem;
+}
+
+.arrow {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.45);
+  border: 0;
+  padding: 0 30px;
+  font-size: 50px;
+  position: absolute;
+}
+.arrow:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.arrow.down {
+  bottom: 0;
+}
+.arrow.up {
+  top: 0;
+}
+
+/* sign-up-bill */
+
+.padd-left {
+  padding-left: 3rem !important;
+}
+
+.sign-form {
+  margin-left: 3rem !important;
+}
+
+.div-text {
+  position: relative;
+  width: 10rem;
+  border-bottom: 1px dashed white;
+  margin-top: 1.5rem;
+}
+
+.div-text .number-text{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sign-up-bill {
+  padding: 1rem 3rem 1.5rem 0rem;
+}

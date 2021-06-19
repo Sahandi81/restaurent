@@ -5,8 +5,22 @@ let email = document.getElementById('email');
 let password = document.getElementById('password');
 let password2 = document.getElementById('password2');
 
-
+let modal = document.getElementById("modalEl");
 function showError(input,message) {
+    console.log(message)
+    modal.style.margin = "0";
+    modal.style.animation = "fadein .5s";
+    span.onclick = function() {
+        modal.style.marginTop = "-150vh";
+        modal.style.animation = "fadeout .5s";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.marginTop = "-150vh";
+            modal.style.animation = "fadeout .5s";
+        }
+    }
     const elem = document.querySelector(".modal .card")
     const small = document.createElement("small")
     small.innerText = message;
@@ -21,7 +35,7 @@ function showSuccess(input) {
 
 
 let required = false;
-let modal = document.getElementById("modalEl");
+
 let span = document.getElementsByClassName("close")[0];
 
 function checkRequired(inpt) {
@@ -30,38 +44,27 @@ function checkRequired(inpt) {
             function Modal() {
                 modal.style.margin = "0";
                 modal.style.animation = "fadein .5s";
-
-                setTimeout(function(){
                     showError(input,
-                        `${getFieldName(input)} is required`,required);
-                }, 200);
+                        `${getFieldName(input)} باید پر شود. `,required);
+                     
+               
             }
             Modal();
-
-            span.onclick = function() {
-                modal.style.marginTop = "-150vh";
-                modal.style.animation = "fadeout .5s";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.marginTop = "-150vh";
-                    modal.style.animation = "fadeout .5s";
-                }
-            }
-            required = true;
         } else {
             showSuccess(input);
+            required = true
         }
     });
 
     return required;
 }
 
+
+
 function checkCharacters(input) {
     let letters = /^[a-zA-Z0-9_]{3,10}$/;
     if (!letters.test(input.value.trim())) {
-        showError(input , 'please enter [a-z-0-9]');
+        showError(input , 'فقط از حروف انگلیسی و اعداد استفاده کنید.');
         return false
     }
     return true
@@ -73,7 +76,7 @@ function checkEmail(input) {
         showSuccess(input);
         return true
     } else {
-        showError(input, 'Email is not valid');
+        showError(input, 'ایمیل معتبر نمیباشد.');
         return false
     }
 }
@@ -82,14 +85,14 @@ function checkLength(input, min, max) {
     if (input.value.length < min) {
         showError(
             input,
-            `${getFieldName(input)} must be at least ${min} characters`
-    );
+            `${getFieldName(input)} باید کمتر از ${min} کارکتر باشد. `
+        );
         return false
     } else if (input.value.length > max) {
         showError(
             input,
-            `${getFieldName(input)} must be less than ${max} characters`
-    );
+            `${getFieldName(input)} باید کمتر از ${max} کارکتر باشد.`
+        );
         return false
     } else {
         showSuccess(input);
@@ -100,7 +103,7 @@ function checkLength(input, min, max) {
 
 function checkPasswordsMatch(input1, input2) {
     if (input1.value !== input2.value) {
-        showError(input2, 'Passwords do not match');
+        showError(input2, 'رمز عبور با تکرار مطابقت ندارد.');
         return false
     }
     return true
@@ -114,13 +117,24 @@ function getFieldName(input) {
 
 form.addEventListener('submit' , function(e) {
     e.preventDefault();
+    console.log(checkPasswordsMatch(password,password2))
 
     if(!checkRequired([username, email, phone, password, password2])){
         return
+        
     }
     if(!checkLength(username, 3, 10) || !checkCharacters(username,  /^[A-Za-z]+$/) || !checkEmail(email) || !checkPasswordsMatch(password, password2) || !checkLength(phone, 6, 11) ||!checkLength(password, 6, 25)) {
-        return true
+            return true
     }
+
+    // if(!checkRequired([username, email, phone, password, password2])){
+    //     checkLength(username, 3, 10);
+    //     checkCharacters(username,  /^[A-Za-z]+$/);
+    //     checkEmail(email);
+    //     checkLength(phone, 6, 11);
+    //     checkLength(password, 6, 25);
+    //     checkPasswordsMatch(password, password2);
+    // }
 
     let formData = new FormData(this);
 
@@ -140,4 +154,3 @@ form.addEventListener('submit' , function(e) {
         console.log(error);
     })
 });
-

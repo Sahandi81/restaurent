@@ -33,10 +33,10 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
             <form class="form" id="form" method="POST">
                 <div class="title-form">
                     <h1> ثبت نام </h1>
-                    <h2><a href="sign-in.php"> ورود </a></h2>
+                    <h2><a href="sign-in.php" style="color: white"> ورود </a></h2>
                 </div>
                 <div class="title-form">
-                    <h2 style="padding: 0 !important;"><a href="sign-up-restaurant.php" style="font-size: 15px"> ثبت رستوران </a></h2>
+                    <h2 style="padding: 0"><a href="sign-up-restaurant.php" style="color: white;font-size: 18px"> ثبت نام رستوران </a></h2>
                 </div>
 
                 <input type="hidden" name="type" value="sing-up">
@@ -71,7 +71,7 @@ if (isset($_POST['type']) && $_POST['type'] == 'sing-up'){
     </div>
 </div>
 
-<div id="modalEl" class="modal">
+<div id="modalEl" class="modal" style="background: rgba(0,0,0,0.6);">
     <div class="modal-content">
         <div class="challenge">
             <span class="close">&times;</span><br>

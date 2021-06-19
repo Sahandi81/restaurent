@@ -29,7 +29,7 @@ $bill = $bill->getBill();
             </a>
             <a href="user-profile.php">
                 <div class="info-user">
-                    <span class="info"> <?= $userData->username ?> </span>
+                    <span class="info"> <?= $userData->username ?? $userData->name ?> </span>
                     <img src="public/img/icon/user.png" class="user" alt="">
                 </div>
             </a>

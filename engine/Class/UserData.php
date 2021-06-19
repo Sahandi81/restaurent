@@ -83,6 +83,15 @@ class UserData extends dbConn
 		if ($role == 'restaurant'){
 			return TRUE;
 		} else {
+			header('Location: sign-up-restaurant.php');
+			die();
+		}
+	}
+	public function thisIsClient($role): bool
+	{
+		if ($role == 'client'){
+			return TRUE;
+		} else {
 			header('Location: sign-up.php');
 			die();
 		}
